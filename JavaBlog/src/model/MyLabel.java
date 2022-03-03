@@ -1,7 +1,7 @@
 package model;
 
-import javax.swing.JLabel;
+import java.awt.Component;
 
-public class MyLabel extends JLabel{
+public class MyLabel extends Component{
 	
 }
