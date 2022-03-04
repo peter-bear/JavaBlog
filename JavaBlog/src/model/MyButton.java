@@ -27,11 +27,6 @@ public class MyButton extends Component{
 		
 	}
 	
-	
-	
-	
-
-
 	public Color getFontColor() {
 		return fontColor;
 	}
@@ -56,7 +51,38 @@ public class MyButton extends Component{
 		return btnText;
 	}
 	
+
 	
+	
+	@Override
+	public void setSize(int width, int height) {
+		// TODO Auto-generated method stub
+		this.roundRect = new RoundRectangle2D.Double(this.getX(), this.getY(), width, height, this.getArcWidth(), this.getArcHeight());
+		super.setBounds(this.getX(), this.getY(), width, height);
+	}
+	
+	
+	
+	
+
+	@Override
+	public void setLocation(int x, int y) {
+		// TODO Auto-generated method stub
+		this.roundRect = new RoundRectangle2D.Double(x,y, this.getWidth(), this.getHeight(), this.getArcWidth(), this.getArcHeight());
+		super.setBounds(x, y, this.getWidth(), this.getHeight());
+	}
+	
+	
+
+	public void setScaleSize(double scale) {
+		double rectW = roundRect.width;
+		double rectH = roundRect.height;
+		
+		roundRect = new RoundRectangle2D.Double(this.getX(), this.getY(), scale*this.getWidth(), scale*this.getHeight(), scale*this.getArcWidth(), scale*this.getArcHeight());
+		super.setBounds((int)(this.getX()+(1-scale)*rectW*0.5), (int)(this.getY()+(1-scale)*rectH*0.5), (int)roundRect.width, (int)roundRect.height);
+		
+		
+	}
 	
 	
 	@Override
@@ -73,7 +99,23 @@ public class MyButton extends Component{
 	}
 	
 
-
+//	private void setArcHeight(int arcH) {
+//		roundRect = new RoundRectangle2D.Double(roundRect.x, roundRect.y, roundRect.width, roundRect.height, roundRect.arcwidth, arcH);
+//	}
+	
+	private int getArcHeight() {
+		
+		return (int)roundRect.getArcHeight();
+	}
+	
+//	private void setArcWidth(int arcW) {
+//		roundRect = new RoundRectangle2D.Double(roundRect.x, roundRect.y, roundRect.width, roundRect.height, arcW, roundRect.archeight);
+//	}
+	
+	private int getArcWidth() {
+	
+		return (int)roundRect.getArcWidth();
+	}
 
 	private int getBtnTextLength() {
 		return this.btnText.length()*this.getFont().getSize();
@@ -84,16 +126,7 @@ public class MyButton extends Component{
 	}
 
 
-	private int getArcHeight() {
-		
-		return (int)roundRect.getArcHeight();
-	}
-	
 
-	private int getArcWidth() {
-	
-		return (int)roundRect.getArcWidth();
-	}
 	
 	
 	
